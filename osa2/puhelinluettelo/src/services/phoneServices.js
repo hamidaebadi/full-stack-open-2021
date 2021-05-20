@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import axios from 'axios'
-const baseUrl = "http://localhost:3001/persons"
+const baseUrl = "/api/persons"
 
 const getAllContacts = () =>{
     const request = axios.get(baseUrl)
@@ -10,7 +10,7 @@ const getAllContacts = () =>{
 
 const addNewContact = contactObj =>{
     const request = axios.post(baseUrl, contactObj)
-    return request.then(response => response.data)
+    return request
 }
 
 const removeContact = (id) =>{

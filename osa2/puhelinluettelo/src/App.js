@@ -123,12 +123,18 @@ const App = () => {
     }else{
        //create person obj
       const newPerson = {name: newName, number:newPhone}
-      phoneServices.addNewContact(newPerson)
-      .then(data => {
-        setPersons(persons.concat(data))
+      phoneServices
+      .addNewContact(newPerson)
+      .then(result => {
+        setPersons(persons.concat(result.data))
         setMessage(`${newName} added to the phone book`)
         setTimeout(() => {
           setMessage(null)
+        }, 3000)
+      }).catch(error => {
+        setErrorMessage(error.response.data.error)
+        setTimeout(()=>{
+          setErrorMessage(null)
         }, 3000)
       })
     }

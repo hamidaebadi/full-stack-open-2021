@@ -1,10 +1,10 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhhbWlkZWJhZGkiLCJpZCI6IjYwYTNlMzE3OGUzNzBmMGI4MWRjMDBiMCIsImlhdCI6MTYyMTQ5OTM4NH0.Apw5QmePIpu7eSob4yjU6IrVtlgkhuJzC8p7Hou9wWg
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhhbWlkZWJhZGkiLCJpZCI6IjYwYTNlMzE3OGUzNzBmMGI4MWRjMDBiMCIsImlhdCI6MTYyMTYxODI2OX0.R9g-ssqMj9gJhNzxL3Lf49AjjudpalKTDJ-qtVBc9TY
 
 {
-    "title": "Test Blog 2000 ",
-    "author": "William sheki",
-    "url": "www.jeok.com",
-    "likes": 200
+    "title": "Amazing Social networking ",
+    "author": "Gholma sakhi",
+    "url": "www.example.com",
+    "likes": 10
 }

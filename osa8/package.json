@@ -1,0 +1,19 @@
+{
+  "name": "osa8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hamid Aebadi",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.6.7",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.0",
+    "nodemon": "^2.0.15",
+    "uuid": "^8.3.2"
+  }
+}

@@ -7,7 +7,7 @@ const schema = new mongoose.Schema({
         minlength: 3
     },
 
-    favrotiGenre:{
+    favoriteGenre:{
         type: String
     }
 })

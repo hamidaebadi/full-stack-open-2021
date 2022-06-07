@@ -91,7 +91,9 @@ const resolvers = {
         if(!context.currentUser){
           throw new AuthenticationError("User not Founded")
         }
-        return await Book.find({genres: "programming"}).populate('author')
+        const faveBooks = await Book.find({genres: "programming"}).populate('author')
+        console.log(faveBooks)
+        return faveBooks
       }
   },
   

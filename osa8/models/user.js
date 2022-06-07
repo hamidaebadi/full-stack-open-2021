@@ -7,7 +7,9 @@ const schema = new mongoose.Schema({
         minlength: 3
     },
 
-    favrotiGenres: [{type: String}]
+    favrotiGenre:{
+        type: String
+    }
 })
 
 module.exports = mongoose.model('User', schema)

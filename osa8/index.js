@@ -20,9 +20,11 @@ const typeDefs = gql`
   type Query {
       bookCount: Int!
       authorCount: Int!
-      allBooks(author: String, genre: String): [Book]!
+      allBooks: [Book]!
+      allBooksByGenre(genre: String!): [Book]
       allAuthors: [Author]!
       me: User
+      userFavoriteBooks: [Book]
   }
 
   type Book {
@@ -76,17 +78,20 @@ const resolvers = {
   Query: {
       bookCount: async () => Book.collection.count(), //done
       authorCount: () => Author.collection.count(), //done
-      allBooks: async (root, args) => {
-          if (args.genre){
-              return Book.find({genre: args.genre})
-          }
-          
-          return Book.find({})
+      allBooks: async () => Book.find().populate('author'), // done
+      allBooksByGenre: async(root, args) => {
+        if(args.genre === "all"){
+          return await Book.find().populate('author')
+        }
+        return await Book.find({genres: {$in: [args.genre]}}).populate('author')
       }, // done
       allAuthors: async () => Author.find({}), // done
-
-      me: (root, args, context) => {
-        return context.currentUser
+      me: (root, args, context) => context.currentUser, // done
+      userFavoriteBooks: async (root, args, context) => {
+        if(!context.currentUser){
+          throw new AuthenticationError("User not Founded")
+        }
+        return await Book.find({genres: "programming"}).populate('author')
       }
   },
   
@@ -147,7 +152,7 @@ const resolvers = {
     }, // done
 
     createUser: async(root, args) => {
-      const user = new User({username: args.username, favoriteGenre: [args.favoriteGenre]})
+      const user = new User({username: args.username, favoriteGenre: args.favoriteGenre})
       return user.save()
       .catch(error => {
         throw new UserInputError(error.message, {invalidArgs: args})

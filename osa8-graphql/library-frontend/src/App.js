@@ -20,10 +20,10 @@ const App = () => {
   
   useSubscription(BOOK_ADDED, {
     onSubscriptionData: ({ subscriptionData }) => {
-      window.alert("Book added")
-    }
-  })
-
+      window.alert(`Book with title ${subscriptionData.data.bookAdded.title} has been added`);
+    },
+  });
+  
   if(!token){
     if(result.loading || booksResult.loading){
       return <div>Loading ...</div>

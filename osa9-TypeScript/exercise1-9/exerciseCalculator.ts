@@ -66,7 +66,7 @@ const giveRating = (aveHours: number, targetHours: number): RatingTabel => {
         }
     }
 }
-const calculateExercises = (targetHour: number, trainingHours: Array<number>): excersiseReport => {
+export const calculateExercises = (targetHour: number, trainingHours: Array<number>): excersiseReport => {
     const aveHours: number = countAverage(trainingHours);
     const {rating, ratingDesc} = giveRating(aveHours, targetHour)
     return {

@@ -5,7 +5,7 @@ get values from command line
 const heigh: number = Number(process.argv[2]);
 const weight: number = Number(process.argv[3]);
 
-const calculateBmi = (height: number, weight: number):string =>{
+export const calculateBmi = (height: number, weight: number):string | undefined =>{
     const tall: number = height/100;
     const bmi: Number = weight / (tall*tall);
 
@@ -16,6 +16,7 @@ const calculateBmi = (height: number, weight: number):string =>{
     }else if(bmi >= 25){
         return "Overweight";
     }
+    return undefined
 }
 
 console.log(calculateBmi(heigh, weight))

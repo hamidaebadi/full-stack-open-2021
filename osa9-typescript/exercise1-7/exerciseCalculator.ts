@@ -8,16 +8,7 @@ interface excersiseProgress {
     average: number
 }
 
-//get command line parameters
-let i = 3;
-const target = Number(process.argv[2]);
-const trainingDays =[];
-while(i < (process.argv.length-2)){
-    trainingDays.push(Number(process.argv[i]));
-    i+=1;
-}
-
-const calculateExercises = (record: Array<number>, target: number): excersiseProgress => {
+export const calculateExercises = (record: Array<number>, target: number): excersiseProgress => {
     const traningHours = record.filter(item => item > 0);
     const totalHours =traningHours.reduce((partialSum, h) => partialSum + h);
     const average = totalHours / 7;
@@ -29,9 +20,9 @@ const calculateExercises = (record: Array<number>, target: number): excersisePro
         ratingDesc = "Not a good training week from you!";
     }else if((average/target) >0.33 && (average/target) <= 0.66){
         rating = 2;
-        ratingDesc = "Quite Good training week";
+        ratingDesc = "Not a bad training week, could be better!";
     }else{
-        rating = 3
+        rating = 3;
         ratingDesc = "Amazing training week with high success";
     }
 
@@ -43,8 +34,7 @@ const calculateExercises = (record: Array<number>, target: number): excersisePro
         ratingDescription: ratingDesc,
         target: target,
         average: average
-    }
+    };
 
-}
+};
 
-console.log(calculateExercises(trainingDays, target));

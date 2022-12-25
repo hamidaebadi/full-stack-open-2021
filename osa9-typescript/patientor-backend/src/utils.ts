@@ -9,7 +9,8 @@ const toNewPatientEntry = ({name, dateOfBirth, ssn, gender, occupation}: Fields)
         dateOfBirth: parseDateOfBirth(dateOfBirth),
         ssn: parseSsn(ssn),
         gender: parseGender(gender),
-        occupation: parseOccupation(occupation)
+        occupation: parseOccupation(occupation),
+        entries: []
     };
     return newEntry;
 };

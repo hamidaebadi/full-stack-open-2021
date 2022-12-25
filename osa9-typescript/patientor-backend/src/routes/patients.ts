@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import express from 'express';
-import {getPublicPatientsData, addNewPatient} from '../services/patientService';
+import {getPublicPatientsData, addNewPatient, findPatientById} from '../services/patientService';
 import toNewPatientEntry from '../utils';
 
 const router = express.Router();
@@ -10,6 +10,15 @@ router.get('/', (_req, res) => {
     res.send(patientData);
 });
 
+//getting specific patient
+router.get('/:id', (req, res) => {
+    const foundedPatient = findPatientById(req.params.id);
+    if(foundedPatient){
+        res.send(foundedPatient);
+    }else{
+        res.status(400).send("User not found!");
+    }
+});
 //adding new patient
 router.post('/', (req, res) => {
     try{

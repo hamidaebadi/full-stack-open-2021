@@ -1,4 +1,4 @@
-import patientData from '../../data/patients.json';
+import patientData from '../../data/patients';
 import {PatientNonSensitive, NewPatientEntry, Patient} from '../types';
 import {v1 as uuid} from 'uuid';
 
@@ -10,6 +10,10 @@ const getPublicPatientsData = ():PatientNonSensitive[] =>{
         gender,
         occupation
     }));
+};
+
+const findPatientById = (id: string):Patient | undefined => {
+    return patientData.find(patient => patient.id === id);
 };
 
 const addNewPatient = (entry: NewPatientEntry): Patient=>{
@@ -25,5 +29,6 @@ const addNewPatient = (entry: NewPatientEntry): Patient=>{
 
 export {
     getPublicPatientsData,
-    addNewPatient
+    addNewPatient,
+    findPatientById
 };

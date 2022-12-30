@@ -58,6 +58,10 @@ export enum Gender{
     FEMALE = "female",
     OTHER = "other"
 }
+// Define special omit for unions
+type UnionOmit<T, K extends string | number | symbol> = T extends unknown ? Omit<T, K> : never;
 
+// Define Entry without the 'id' property
+export type newEntryRecord = UnionOmit<Entry, 'id'>;
 export type PatientNonSensitive = Omit<Patient, 'ssn' | 'entries'>;
 export type NewPatientEntry = Omit<Patient, 'id'>;
